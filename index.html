@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ana Beatriz - Motivos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: white;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .btn {
+      padding: 14px 35px;
+      font-size: 16px;
+      border-radius: 50px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #e6e6e6;
+    }
+
+    .reason {
+      font-size: 18px;
+      max-width: 300px;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reason.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .heart {
+      font-size: 28px;
+      color: #ff4da6;
+      animation: float 3s ease-in-out infinite;
+      margin-top: 40px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 34px;
+      }
+      .btn {
+        padding: 12px 28px;
+      }
+      .reason {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ana Beatriz</h1>
+
+  <button class="btn" id="showReasonBtn">Descobrir um motivo 💌</button>
+
+  <div class="reason" id="reason"></div>
+
+  <div class="heart">💘</div>
+
+  <script>
+    const reasons = [
+      "Porque seu sorriso muda meu dia.",
+      "Porque você é minha paz.",
+      "Porque seu abraço é meu refúgio.",
+      "Porque você me faz rir mesmo nos dias difíceis.",
+      "Porque você é incrivelmente você.",
+      "Porque cada momento com você é especial.",
+      "Porque você ilumina meu mundo.",
+      "Porque eu amo cada detalhe seu.",
+      "Porque você faz meu coração bater mais forte.",
+      "Porque estar com você é sentir-se em casa."
+    ];
+
+    const button = document.getElementById("showReasonBtn");
+    const reasonDiv = document.getElementById("reason");
+
+    button.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * reasons.length);
+      reasonDiv.textContent = reasons[randomIndex];
+      reasonDiv.classList.remove("show");
+      void reasonDiv.offsetWidth; // reinicia animação
+      reasonDiv.classList.add("show");
+    });
+  </script>
+
+</body>
+</html>
